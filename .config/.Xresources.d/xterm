@@ -1,0 +1,47 @@
+!---------------------------------------------
+! XTerm
+!---------------------------------------------
+XTerm.termName:		xterm-256color
+XTerm*utf8Title:	true
+XTerm*faceName:		Droid Sans Mono
+xterm*faceSize:		10
+xterm*bolfFont:
+xterm*scrollBar:	false
+xterm*geometry:		80x50
+xterm*eightBitInput:	false
+xterm*metaSendEscape:	true
+xterm*cursorBlink:	true
+xterm*cursorOnTime:	500
+xterm*cursorOffTime:	400
+xterm*colorBDMode:	true
+xterm*colorBLMode:	true
+xterm*boldMode:		on
+xterm*alwaysBoldMode:	false
+xterm*dynamicColors:	on
+xterm*colorMode:	on
+xterm*saveLines:	10000
+xterm*visualBell:	false
+
+!---------------------------------------------
+! Colors
+!---------------------------------------------
+xterm*colorBD:		#d6d51d
+xterm*cursorColor:	#d5d61d
+xterm*background:	#040f18
+xterm*foreground:	#e0f3f7
+xterm*color0:		#191d28
+xterm*color1:		#c84b21
+xterm*color2:		#21c84b
+xterm*color3:		#9ec821
+xterm*color4:		#4b21c8
+xterm*color5:		#c8219e
+xterm*color6:		#219ec8
+xterm*color7:		#caced9
+xterm*color8:		#30333e
+xterm*color9:		#e27652
+xterm*color10:		#52e276
+xterm*color11:		#bee252
+xterm*color12:		#7652e2
+xterm*color13:		#e252be
+xterm*color14:		#52bee2
+xterm*color15:		#dde0ec
