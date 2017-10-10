@@ -1,0 +1,10 @@
+[diff]
+	tool = vimdiff
+[color]
+	ui = auto
+[alias]
+	br = branch
+	ci = commit
+	co = checkout
+	hist = log --graph --decorate --oneline
+	st = status
