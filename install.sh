@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# .Xresouces
-cp -f ./.Xresources ~/.Xresources && \
-mkdir -p ~/.config/.Xresources.d && \
-cp -Rf ./.config/.Xresources.d/* ~/.config/.Xresources.d && \
+# .Xresources
+cp -f ./files/Xresources ~/.Xresources && \
+mkdir -p ~/.config/Xresources.d && \
+cp -Rf ./files/config/Xresources.d/* ~/.config/.Xresources.d && \
 xrdb -load ~/.Xresources
 
 # .gitconfig
