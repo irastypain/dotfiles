@@ -3,7 +3,7 @@
 !---------------------------------------------
 XTerm.termName:		xterm-256color
 XTerm*utf8Title:	true
-XTerm*faceName:		Droid Sans Mono
+XTerm*faceName:		Droid Sans Mono for Powerline
 xterm*faceSize:		10
 xterm*bolfFont:
 xterm*scrollBar:	false
@@ -21,6 +21,7 @@ xterm*dynamicColors:	on
 xterm*colorMode:	on
 xterm*saveLines:	10000
 xterm*visualBell:	false
+xterm*loginShell:	true
 XTerm.vt100.translations: #override \n\
   Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
   Ctrl Shift <Key>V: insert-selection(CLIPBOARD)

@@ -8,3 +8,4 @@
 ## Setup
 1. `git clone <this repo>`
 2. `make install`
+
