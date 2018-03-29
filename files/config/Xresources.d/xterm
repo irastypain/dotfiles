@@ -3,9 +3,9 @@
 !---------------------------------------------
 XTerm.termName:		xterm-256color
 XTerm*utf8Title:	true
-XTerm*faceName:		Droid Sans Mono for Powerline
+XTerm*faceName:   Source Code Pro for Powerline
 xterm*faceSize:		10
-xterm*bolfFont:
+xterm*bolfFont:   false
 xterm*scrollBar:	false
 xterm*geometry:		80x50
 xterm*eightBitInput:	false
