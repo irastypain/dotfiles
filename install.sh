@@ -8,3 +8,7 @@ xrdb -load ~/.Xresources
 
 # .gitconfig
 cp -f ./files/gitconfig ~/.gitconfig
+
+# .vimrc
+cp -f ./files/vimrc ~/.vimrc
+

@@ -1,0 +1,93 @@
+" Кофигурационный файл для vim
+" Автор: i.rastypain@gmail.com
+"
+" Директория для плагинов
+call plug#begin('~/.vim/plugged')
+
+" Основные
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'kien/ctrlp.vim'
+Plug 'vim-airline/vim-airline'
+
+" Интеграция с Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Редактор
+Plug 'jiangmiao/auto-pairs'
+Plug 'easymotion/vim-easymotion'
+
+" Цветовые схемы
+Plug 'morhetz/gruvbox'
+Plug 'w0ng/vim-hybrid'
+Plug 'ajmwagar/vim-deus'
+
+" Инициализация системы плагинов
+call plug#end()
+
+" Включение работы горячих клавиш на русской раскладке
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+
+let mapleader = "\<Space>"
+
+" Включение подсветки синтаксиса
+syntax enable
+
+" Цветовая схема
+set background=dark
+colorscheme gruvbox
+
+let g:airline_powerline_fonts=1
+
+" Нумерация строк
+set number
+
+" Подсветка строки курсора
+set cursorline
+
+" Замена табуляции пробелами, отступы
+set tabstop=2
+set shiftwidth=2
+set smarttab
+set expandtab
+set smartindent
+
+" Подсветка поиска
+set hlsearch
+set incsearch
+
+" Назначение клавиш и их комбинаций
+" Открытие/закрытие дерева каталогов
+nmap <silent> <leader>, :NERDTreeToggle<CR>
+
+" Редактирование и перезагрузка конфига
+nmap <leader>ve :vsp ~/.vimrc<CR>
+nmap <leader>vr :source ~/.vimrc<CR>
+
+" Git
+nmap <silent> <leader>gb :Gblame<CR>
+
+" Управление подсветкой поиска
+nmap <silent> <leader>/ :nohlsearch<CR>
+noremap ,hl :set hlsearch! hlsearch?<CR>
+noremap <silent> ,hlr :let @/ = ""<CR>
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" Перемещение по открытым окнам
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
+
+filetype on
+filetype plugin on
+filetype indent on
+
+set showcmd
