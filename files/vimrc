@@ -7,6 +7,8 @@ call plug#begin('~/.vim/plugged')
 " Основные
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 
 " Интеграция с Git
@@ -16,6 +18,7 @@ Plug 'airblade/vim-gitgutter'
 " Редактор
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdcommenter'
 
 " Цветовые схемы
 Plug 'morhetz/gruvbox'
@@ -83,6 +86,15 @@ nmap <Leader>Ml <Plug>(easymotion-overwin-line)
 map  <Leader>mw <Plug>(easymotion-bd-w)
 nmap <Leader>Mw <Plug>(easymotion-overwin-w)
 
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
 " Перемещение по открытым окнам
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
@@ -94,6 +106,7 @@ imap <S-CR> <CR><CR>end<Esc>-cc
 
 " Общее
 nnoremap <leader>w :w<CR>
+nnoremap qq :q!<CR>
 
 filetype on
 filetype plugin on
