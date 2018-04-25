@@ -106,7 +106,9 @@ imap <S-CR> <CR><CR>end<Esc>-cc
 
 " Общее
 nnoremap <leader>w :w<CR>
+nnoremap <leader>sw :w !sudo tee > /dev/null %<CR>
 nnoremap qq :q!<CR>
+nnoremap qa :qa!<CR>
 
 filetype on
 filetype plugin on
