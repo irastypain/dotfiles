@@ -96,6 +96,11 @@ nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
+" Поиск
+nnoremap <Leader>fc :Commits<CR>
+nnoremap <Leader>ff :Files<CR>
+nnoremap <Leader>fa :Ag<CR>
+
 " Перемещение по открытым окнам
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
