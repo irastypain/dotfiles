@@ -10,6 +10,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'jlanzarotta/bufexplorer'
 
 " Интеграция с Git
 Plug 'tpope/vim-fugitive'
@@ -20,6 +21,7 @@ Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdcommenter'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Цветовые схемы
 Plug 'morhetz/gruvbox'
@@ -27,7 +29,17 @@ Plug 'w0ng/vim-hybrid'
 Plug 'ajmwagar/vim-deus'
 
 " Языки программирования и инструменты
+Plug 'w0rp/ale'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'vim-syntastic/syntastic'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+Plug 'felixfbecker/php-language-server', { 'for': 'php', 'do': 'composer install && composer run-script parse-stubs'}
+" Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
 
 " Инициализация системы плагинов
 call plug#end()
@@ -44,7 +56,9 @@ syntax enable
 set background=dark
 colorscheme gruvbox
 
+" Airline
 let g:airline_powerline_fonts=1
+let g:airline#extensions#ale#enabled = 1
 
 " Нумерация строк
 set number
@@ -54,14 +68,29 @@ set cursorline
 
 " Замена табуляции пробелами, отступы
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set smarttab
 set expandtab
 set smartindent
 
+" Buffer
+set hidden
+
+" ALE
+let g:ale_completion_enabled = 1
+let g:ale_php_phpcs_standard = 'PSR2'
+
 " Подсветка поиска
 set hlsearch
 set incsearch
+
+" Language Server Protocol
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+      \ 'php': ['php', expand('~/.vim/plugged/php-language-server/bin/php-language-server.php')],
+      \ 'ruby': ['language_server-ruby'],
+      \ }
 
 " Назначение клавиш и их комбинаций
 " Открытие/закрытие дерева каталогов
@@ -116,12 +145,18 @@ nnoremap <leader>sw :w !sudo tee > /dev/null %<CR>
 nnoremap qq :q!<CR>
 nnoremap qa :qa!<CR>
 
+" Language Client
+lnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
 filetype on
 filetype plugin on
 filetype indent on
 
-"set showcmd
-
+" NERDTree for gitgutter
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
@@ -134,3 +169,25 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+"augroup common
+  "autocmd BufEnter * EnableStripWhitespaceOnSave
+"augroup END
+
+augroup filetypedetect
+  " autocmd!
+  " au BufEnter *.markdown,*.mkd,*.md setl wrap tw=79
+  " au BufEnter *.json setl ft=javascript
+  " au BufEnter *.coffee setl sw=2 expandtab
+  " au BufEnter *.py setl ts=4 sw=4 sts=4
+  autocmd BufEnter *.php setlocal ts=4 sw=4 sts=4
+  " autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
+  " autocmd BufNewFile,BufRead *.slime setlocal filetype=slim
+  " au BufEnter *.js setl ts=2 sw=2 sts=2
+  " au BufEnter *.html setl ts=4 sw=4 sts=4
+  " au BufEnter *.tex setl wrap tw=79 fo=tcqor
+  " au BufEnter *.[ch] setl cindent
+  " au BufEnter *.[ch]pp setl cindent
+  " au BufEnter Makefile setl ts=4 sts=4 sw=4 noet list
+  " au BufEnter *.es6 setf javascript
+augroup END
