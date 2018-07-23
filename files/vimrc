@@ -32,6 +32,7 @@ Plug 'ajmwagar/vim-deus'
 " Языки программирования и инструменты
 Plug 'w0rp/ale'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'slim-template/slim', { 'for': ['slim', 'slime'] }
 Plug 'vim-syntastic/syntastic'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -182,8 +183,8 @@ augroup filetypedetect
   " au BufEnter *.coffee setl sw=2 expandtab
   " au BufEnter *.py setl ts=4 sw=4 sts=4
   autocmd BufEnter *.php setlocal ts=4 sw=4 sts=4
-  " autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
-  " autocmd BufNewFile,BufRead *.slime setlocal filetype=slim
+  autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
+  autocmd BufNewFile,BufRead *.slime setlocal filetype=slim
   " au BufEnter *.js setl ts=2 sw=2 sts=2
   " au BufEnter *.html setl ts=4 sw=4 sts=4
   " au BufEnter *.tex setl wrap tw=79 fo=tcqor
