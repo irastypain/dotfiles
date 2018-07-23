@@ -32,7 +32,7 @@ Plug 'ajmwagar/vim-deus'
 " Языки программирования и инструменты
 Plug 'w0rp/ale'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'slim-template/slim', { 'for': ['slim', 'slime'] }
+Plug 'slim-template/vim-slim', { 'for': ['slim', 'slime'] }
 Plug 'vim-syntastic/syntastic'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
