@@ -73,6 +73,9 @@ set smarttab
 set expandtab
 set smartindent
 
+" Отключение .swp
+set noswapfile
+
 " Buffer
 set hidden
 
