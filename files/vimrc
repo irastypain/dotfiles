@@ -103,6 +103,7 @@ nmap <leader>vr :source ~/.vimrc<CR>
 
 " Git
 nmap <silent> <leader>gb :Gblame<CR>
+nmap <silent> <leader>gbr :Gbrowse<CR>
 
 " Управление подсветкой поиска
 nmap <silent> <leader>/ :nohlsearch<CR>
