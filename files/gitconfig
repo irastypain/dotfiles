@@ -5,6 +5,10 @@
 [alias]
 	br = branch
 	ci = commit
+  ca = amend
 	co = checkout
 	hist = log --graph --decorate --oneline
 	st = status
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
