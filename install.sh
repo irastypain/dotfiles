@@ -9,6 +9,9 @@ xrdb -load ~/.Xresources
 # .gitconfig
 cp -f ./files/gitconfig ~/.gitconfig
 
+# .gitignore_global
+cp -f ./files/gitignore_global ~/.gitignore_global
+
 # .vimrc
 cp -f ./files/vimrc ~/.vimrc
 
