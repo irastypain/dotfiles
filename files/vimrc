@@ -40,10 +40,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
-Plug 'felixfbecker/php-language-server', { 'for': 'php', 'do': 'composer install && composer run-script parse-stubs'}
-" Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
-Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
-
 " Инициализация системы плагинов
 call plug#end()
 
@@ -91,7 +87,6 @@ set incsearch
 " Language Server Protocol
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-      \ 'php': ['php', expand('~/.vim/plugged/php-language-server/bin/php-language-server.php')],
       \ 'ruby': ['language_server-ruby'],
       \ }
 
