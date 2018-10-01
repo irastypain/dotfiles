@@ -1,0 +1,5 @@
+# common
+alias ls='ls -p -v --color=auto --group-directories-first'
+alias l='ls -l'
+alias la='ls -la'
+

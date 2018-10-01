@@ -1,0 +1,10 @@
+#common
+alias off='shutdown -h 0'
+
+# for Pacman
+alias install='sudo pacman -S'
+alias update='sudo pacman -Syu'
+
+# for Pacaur
+alias aurinstall='pacaur -S'
+alias aurupdate='pacaur -Syu'

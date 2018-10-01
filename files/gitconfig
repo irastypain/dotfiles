@@ -1,11 +1,14 @@
+[user]
+  name = Ivan Rastyapin
+  email = i.rastypain@gmail.com
 [diff]
 	tool = vimdiff
 [color]
 	ui = auto
 [alias]
 	br = branch
-	ci = commit
   ca = amend
+	ci = commit
 	co = checkout
 	hist = log --graph --decorate --oneline
 	st = status
