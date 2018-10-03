@@ -93,6 +93,10 @@ let g:LanguageClient_serverCommands = {
       \ 'ruby': ['language_server-ruby'],
       \ }
 
+let g:ale_linters = {
+      \ 'ruby': ['ruby', 'rubocop', 'reek'],
+      \}
+
 " Назначение клавиш и их комбинаций
 " Открытие/закрытие дерева каталогов
 nmap <silent> <leader>n :NERDTreeToggle<CR>
