@@ -1,166 +1,127 @@
-" Кофигурационный файл для vim
-" Автор: i.rastypain@gmail.com
+" ==========================================
+" .vimrc config file
+" author: i.rastypain@gmail.com
+
+" ==========================================
+" Including plugins
 "
-" Директория для плагинов
 call plug#begin('~/.vim/plugged')
 
-" Основные
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'kien/ctrlp.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'jlanzarotta/bufexplorer'
+  " General
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-git'
+  Plug 'tpope/vim-rhubarb'
+  Plug 'tpope/vim-surround'
+  Plug 'w0rp/ale'
 
-" Интеграция с Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-rhubarb'
+  " Navigation and search
+  Plug 'jlanzarotta/bufexplorer'
+  Plug 'kien/ctrlp.vim'
+  Plug 'jasoncodes/ctrlp-modified.vim'
+  Plug 'dyng/ctrlsf.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'easymotion/vim-easymotion'
 
-" Редактор
-Plug 'jiangmiao/auto-pairs'
-Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdcommenter'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'tpope/vim-commentary'
+  " Advanced
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'xuyuanp/nerdtree-git-plugin'
+  Plug 'vim-scripts/SyntaxRange'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'ConradIrwin/vim-bracketed-paste'
+  Plug 'airblade/vim-gitgutter'
 
-" Цветовые схемы
-Plug 'morhetz/gruvbox'
-Plug 'w0ng/vim-hybrid'
-Plug 'ajmwagar/vim-deus'
+  " Color schemes
+  Plug 'morhetz/gruvbox'
 
-" Языки программирования и инструменты
-Plug 'w0rp/ale'
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'slim-template/vim-slim', { 'for': ['slim', 'slime'] }
-Plug 'vim-syntastic/syntastic'
-Plug 'autozimu/LanguageClient-neovim', {
+  " Languages
+  "
+  " Ruby, Rails
+  Plug 'tpope/vim-bundler'
+  Plug 'tpope/vim-rails'
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'sunaku/vim-ruby-minitest'
+  Plug 'thoughtbot/vim-rspec'
+  Plug 'tpope/vim-rvm'
+  Plug 'p0deje/vim-ruby-interpolation'
+  "
+  " Common
+  Plug 'tpope/vim-markdown'
+  Plug 'slim-template/vim-slim'
+  Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
 
-" Инициализация системы плагинов
 call plug#end()
 
-" Включение работы горячих клавиш на русской раскладке
+" ==========================================
+" Support russian layout in command mode
+"
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
-let mapleader = "\<Space>"
+" ==========================================
+" <leader>
+"
+let mapleader=","
 
-" Включение подсветки синтаксиса
-syntax enable
-
-" Цветовая схема
-set background=dark
+" ==========================================
+" Color scheme
+"
 colorscheme gruvbox
+
+" ==========================================
+" General options
+"
+set background=dark
+set clipboard=unnamed
+set cursorline
+set expandtab
+set hidden
+set hlsearch
+set ignorecase
+set lazyredraw
+set nobackup
+set noswapfile
+set nowrap
+set number
+set shiftwidth=2
+set smartcase
+set splitbelow
+set splitright
+set t_Co=256
+set tabstop=2
+
+" ==========================================
+" Plugins
+"
+" ALE
+let g:ale_set_highlights = 0
+let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
+let g:ale_linters = {
+      \ 'ruby': ['ruby', 'rubocop', 'reek'],
+      \}
 
 " Airline
 let g:airline_powerline_fonts=1
 let g:airline#extensions#ale#enabled = 1
 
-" Нумерация строк
-set number
+" BufExplorer
+let g:bufExplorerShowRelativePath=1
 
-" Подсветка строки курсора
-set cursorline
+" CtrlP
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
 
-" Замена табуляции пробелами, отступы
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set smarttab
-set expandtab
-set smartindent
-
-" Отключение .swp
-set noswapfile
-
-" Buffer
-set hidden
-
-" ALE
-let g:ale_completion_enabled = 1
-let g:ale_php_phpcs_standard = 'PSR2'
-
-" Подсветка поиска
-set hlsearch
-set incsearch
-
-" Language Server Protocol
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {
-      \ 'ruby': ['language_server-ruby'],
-      \ }
-
-let g:ale_linters = {
-      \ 'ruby': ['ruby', 'rubocop', 'reek'],
-      \}
-
-" Назначение клавиш и их комбинаций
-" Открытие/закрытие дерева каталогов
-nmap <silent> <leader>n :NERDTreeToggle<CR>
-
-" Редактирование и перезагрузка конфига
-nmap <leader>ve :vsp ~/.vimrc<CR>
-nmap <leader>vr :source ~/.vimrc<CR>
-
-" Git
-nmap <silent> <leader>gb :Gblame<CR>
-nmap <silent> <leader>gbr :Gbrowse<CR>
-
-" Управление подсветкой поиска
-nmap <silent> <leader>/ :nohlsearch<CR>
-noremap ,hl :set hlsearch! hlsearch?<CR>
-noremap <silent> ,hlr :let @/ = ""<CR>
-
-" Move to line
-map <Leader>ml <Plug>(easymotion-bd-jk)
-nmap <Leader>Ml <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  <Leader>mw <Plug>(easymotion-bd-w)
-nmap <Leader>Mw <Plug>(easymotion-overwin-w)
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Поиск
-nnoremap <Leader>fc :Commits<CR>
-nnoremap <Leader>ff :Files<CR>
-nnoremap <Leader>fa :Ag<CR>
-
-" Перемещение по открытым окнам
-map <C-k> <C-w><Up>
-map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
-
-" Редактор
-imap <S-CR> <CR><CR>end<Esc>-cc
-
-" Общее
-nnoremap <leader>w :w<CR>
-nnoremap <leader>sw :w !sudo tee > /dev/null %<CR>
-nnoremap qq :q!<CR>
-nnoremap qa :qa!<CR>
-
-" Language Client
-lnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-filetype on
-filetype plugin on
-filetype indent on
+" EasyMotion
+let g:EasyMotion_do_mapping = 0
 
 " NERDTree for gitgutter
 let g:NERDTreeIndicatorMapCustom = {
@@ -176,24 +137,97 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-"augroup common
-  "autocmd BufEnter * EnableStripWhitespaceOnSave
-"augroup END
+" ==========================================
+" Keymapping
+"
+" NERDTree
+nmap <C-\> :NERDTreeFind<CR>
+nmap <silent> <Leader><Leader> :NERDTreeToggle<CR>
 
-augroup filetypedetect
-  " autocmd!
-  " au BufEnter *.markdown,*.mkd,*.md setl wrap tw=79
-  " au BufEnter *.json setl ft=javascript
-  " au BufEnter *.coffee setl sw=2 expandtab
-  " au BufEnter *.py setl ts=4 sw=4 sts=4
-  autocmd BufEnter *.php setlocal ts=4 sw=4 sts=4
-  autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
-  autocmd BufNewFile,BufRead *.slime setlocal filetype=slim
-  " au BufEnter *.js setl ts=2 sw=2 sts=2
-  " au BufEnter *.html setl ts=4 sw=4 sts=4
-  " au BufEnter *.tex setl wrap tw=79 fo=tcqor
-  " au BufEnter *.[ch] setl cindent
-  " au BufEnter *.[ch]pp setl cindent
-  " au BufEnter Makefile setl ts=4 sts=4 sw=4 noet list
-  " au BufEnter *.es6 setf javascript
+" Moving between opened windows
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
+nnoremap <silent> <bs> <C-w><Left>
+
+" Move to line
+map <Space>ml <Plug>(easymotion-bd-jk)
+nmap <Space>Ml <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Space>mw <Plug>(easymotion-bd-w)
+nmap <Space>Mw <Plug>(easymotion-overwin-w)
+
+" JK motions: Line motions
+map <Space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
+
+" ==========================================
+" UPPER/lowercase word
+"
+nmap <Leader>u mQviwU`Q
+nmap <Leader>l mQviwu`Q
+
+" ==========================================
+" Highlight matches
+"
+nmap <silent> // :nohlsearch<CR>
+noremap ,hl :set hlsearch! hlsearch?<CR>
+
+" ==========================================
+" Ctrlp git modified
+"
+map <Leader>m :CtrlPModified<CR>
+map <Leader>M :CtrlPBranch<CR>
+
+" ==========================================
+" Allows you to enter sudo pass and save the file
+" when you forgot to open your file with sudo
+"
+cmap w!! %!sudo tee > /dev/null null%
+
+" ==========================================
+" Allow to copy/paste between VIM instances
+" copy the current visual selection to ~/.vbuf
+vmap <Leader>y :w! ~/.vbuf<CR>
+
+" copy the current line to the buffer file if no visual selection
+nmap <Leader>y :.w! ~/.vbuf<CR>
+
+" paste the contents of the buffer file
+nmap <Leader>p :r ~/.vbuf<CR>
+
+" ==========================================
+" Autocommands
+"
+" Common
+augroup au_common
+  au!
+
+  " Automatically removing all trailing whitespace
+  au BufWritePre * :%s/\s\+$//e
+
+  au BufRead,BufNewFile {Capfile,Gemfile,Guardfile,Vagrantfile,*.prawn} set ft=ruby
+  au BufRead,BufNewFile {.babelrc,.eslintrc} set ft=json
+augroup END
+
+" For ruby filetype
+augroup ft_ruby
+  au FileType ruby call SyntaxRange#IncludeEx('keepend start="\%(<<[-\~]SQL\>.*\n\)\@<=" end="SQL" containedin=ALL', 'sql')
+augroup END
+
+" For slim filetype
+augroup ft_slim
+  au BufNewFile,BufRead *.slim setlocal filetype=slim
+  au BufNewFile,BufRead *.slime setlocal filetype=slim
+augroup END
+
+" Identing
+augroup set_shift_width
+  au!
+  au FileType ruby  setl sw=2 sts=2 et
+  au FileType eruby setl sw=2 sts=2 et
+  au FileType javascript setl sw=2 sts=2 et
+  au FileType yaml setl sw=2 sts=2 et
 augroup END
