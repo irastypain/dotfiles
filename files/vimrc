@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-git'
   Plug 'tpope/vim-rhubarb'
   Plug 'tpope/vim-surround'
+  Plug 'janko-m/vim-test'
   Plug 'w0rp/ale'
 
   " Navigation and search
@@ -180,6 +181,34 @@ noremap ,hl :set hlsearch! hlsearch?<CR>
 "
 map <Leader>m :CtrlPModified<CR>
 map <Leader>M :CtrlPBranch<CR>
+
+" ==========================================
+" CtrlSF
+"
+nmap <C-F>f <Plug>CtrlSFPrompt
+vmap <C-F>f <Plug>CtrlSFVwordPath
+vmap <C-F>F <Plug>CtrlSFVwordExec
+nmap <C-F>n <Plug>CtrlSFCwordPath
+nmap <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-F>t :CtrlSFToggle<CR>
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+
+" ==========================================
+" Vim Fugitive
+"
+map <Leader>gbl :Gblame<CR>
+map <Leader>gbr :Gbrowse<CR>
+map <Leader>gd :Gdiff<CR>
+
+" ==========================================
+" Vim Test
+"
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
 
 " ==========================================
 " Allows you to enter sudo pass and save the file
