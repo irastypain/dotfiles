@@ -10,7 +10,8 @@ vim:
 	@cp -f files/vimrc ~/.vimrc
 
 git:
-	@cp -f files/gitignore_global ~/.gitignore_global && \
+	@mkdir -p ~/projects/home ~/projects/work ~/projects/oss && \
+	cp -f files/gitignore_global ~/.gitignore_global && \
 	cp -f files/gitconfig ~/.gitconfig
 
 aliases:

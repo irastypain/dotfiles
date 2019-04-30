@@ -1,16 +1,56 @@
-[user]
-  name = Ivan Rastyapin
 [diff]
 	tool = vimdiff
 [color]
 	ui = auto
-[alias]
-	br = branch
-  ca = amend
-	ci = commit
-	co = checkout
-	hist = log --graph --decorate --oneline
-	st = status
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global
+
+[alias]
+  # branch
+	br = branch
+  brv = branch -v
+
+  # commit
+	co = commit
+  coa = commit --amend
+  com = commit -m
+
+  # checkout
+	ch = checkout
+  chb = checkout -b
+
+  # diff
+  di = diff
+  dis = diff --staged
+
+  # log
+  lo = log --oneline
+	logd = log --graph --decorate --oneline
+
+  # difftool
+  dt = difftool
+  dts = difftool --staged
+
+  # pull
+  pl = pull
+  plr = pull --rebase
+
+  # push
+  ps = push
+  pso = push origin
+  psf = push -f
+  psfo = push -f origin
+  psuo = push -u origin
+
+  # status
+	st = status
+
+[includeIf "gitdir/i:~/projects/work/"]
+  path = ~/projects/work/.gitconfig
+
+[includeIf "gitdir/i:~/projects/home/"]
+  path = ~/projects/home/.gitconfig
+
+[includeIf "gitdir/i:~/projects/oss/"]
+  path = ~/projects/oss/.gitconfig
