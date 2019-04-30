@@ -30,7 +30,7 @@ call plug#begin('~/.vim/plugged')
   " Advanced
   Plug 'jiangmiao/auto-pairs'
   Plug 'xuyuanp/nerdtree-git-plugin'
-  Plug 'vim-scripts/SyntaxRange'
+  Plug 'inkarkat/vim-SyntaxRange'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'ConradIrwin/vim-bracketed-paste'
@@ -96,16 +96,21 @@ set splitbelow
 set splitright
 set t_Co=256
 set tabstop=2
+set textwidth=80
+set colorcolumn=+1
 
 " ==========================================
 " Plugins
 "
 " ALE
-let g:ale_set_highlights = 0
 let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {
       \ 'ruby': ['ruby', 'rubocop', 'reek'],
       \}
+let g:ale_linters_explicit = 1
+let g:ale_set_highlights = 0
 
 " Airline
 let g:airline_powerline_fonts=1
@@ -204,11 +209,11 @@ map <Leader>gd :Gdiff<CR>
 " ==========================================
 " Vim Test
 "
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
+nmap <silent> <Leader>tn :TestNearest<CR>
+nmap <silent> <Leader>tf :TestFile<CR>
+nmap <silent> <Leader>ts :TestSuite<CR>
+nmap <silent> <Leader>tl :TestLast<CR>
+nmap <silent> <Leader>tg :TestVisit<CR>
 
 " ==========================================
 " Allows you to enter sudo pass and save the file
@@ -243,6 +248,8 @@ augroup END
 
 " For ruby filetype
 augroup ft_ruby
+  au BufRead,BufNewFile *.rb setlocal textwidth=120
+
   au FileType ruby call SyntaxRange#IncludeEx('keepend start="\%(<<[-\~]SQL\>.*\n\)\@<=" end="SQL" containedin=ALL', 'sql')
 augroup END
 
