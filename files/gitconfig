@@ -1,7 +1,9 @@
 [diff]
 	tool = vimdiff
+
 [color]
 	ui = auto
+
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global
@@ -9,6 +11,9 @@
 [alias]
   # branch
 	br = branch
+  brd = branch -d
+  brdf = branch -D
+  brm = branch -m
   brv = branch -v
 
   # commit
@@ -54,3 +59,6 @@
 
 [includeIf "gitdir/i:~/projects/oss/"]
   path = ~/projects/oss/.gitconfig
+
+[includeIf "gitdir/i:~/projects/rubycrutch/"]
+  path = ~/projects/rubycrutch/.gitconfig
