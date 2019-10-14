@@ -124,6 +124,7 @@ if executable('rg')
   set grepprg=rg\ --color=never
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
   let g:ctrlp_use_caching = 0
+  let g:ctrlp_lazy_update = 1
 endif
 
 " EasyMotion
@@ -168,6 +169,9 @@ nmap <Space>Mw <Plug>(easymotion-overwin-w)
 " JK motions: Line motions
 map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
+
+" Fastest search
+nnoremap <C-p>a :Rg<Cr>
 
 " ==========================================
 " UPPER/lowercase word
