@@ -49,6 +49,12 @@
   psfo = push -f origin
   psuo = push -u origin
 
+  # stash
+  sth = stash
+  stp = stash pop
+  sts = stash show
+  stl = stash list
+
   # status
 	st = status
 
