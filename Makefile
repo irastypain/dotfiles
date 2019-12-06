@@ -1,4 +1,7 @@
-all: xresources vim git aliases for-arch
+all: xresources vim git aliases for-arch tmux
+
+install:
+	@echo 'Dummy target. See more details in Makefile'
 
 xresources:
 	@cp -f ./files/Xresources ~/.Xresources && \
@@ -13,6 +16,9 @@ git:
 	@mkdir -p ~/projects/home ~/projects/work ~/projects/oss ~/projects/rubycrutch && \
 	cp -f files/gitignore_global ~/.gitignore_global && \
 	cp -f files/gitconfig ~/.gitconfig
+
+tmux:
+	@cp -f files/tmux.conf ~/.tmux.conf
 
 aliases:
 	@cp -f files/aliases ~/.aliases
