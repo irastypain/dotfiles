@@ -25,6 +25,9 @@
 	ch = checkout
   chb = checkout -b
 
+  # cherry-pick
+  chrp = cherry-pick
+
   # diff
   di = diff
   dis = diff --staged
