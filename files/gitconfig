@@ -61,6 +61,10 @@
   # status
 	st = status
 
+  # custom commands
+  # reset last commit to unstaged area
+  rstlc = reset --soft HEAD~1
+
 [includeIf "gitdir/i:~/projects/work/"]
   path = ~/projects/work/.gitconfig
 
