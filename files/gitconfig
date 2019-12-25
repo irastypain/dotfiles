@@ -62,7 +62,7 @@
 	st = status
 
   # custom commands
-  # reset last commit to unstaged area
+  # reset last commit to staged area
   rstlc = reset --soft HEAD~1
 
 [includeIf "gitdir/i:~/projects/work/"]
