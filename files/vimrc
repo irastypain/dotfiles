@@ -4,7 +4,7 @@
 
 " ==========================================
 " Including plugins
-"
+
 call plug#begin('~/.vim/plugged')
 
   " General
@@ -36,11 +36,20 @@ call plug#begin('~/.vim/plugged')
   Plug 'ConradIrwin/vim-bracketed-paste'
   Plug 'airblade/vim-gitgutter'
 
+  " Tools integration
+  Plug 'rizzatti/dash.vim'
+
   " Color schemes
   Plug 'morhetz/gruvbox'
 
   " Languages
   "
+  " Erlang
+  Plug 'vim-erlang/vim-erlang-runtime'
+
+  " Racket
+  Plug 'wlangstroth/vim-racket'
+
   " Ruby, Rails
   Plug 'tpope/vim-bundler'
   Plug 'tpope/vim-rails'
@@ -49,7 +58,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'thoughtbot/vim-rspec'
   Plug 'tpope/vim-rvm'
   Plug 'p0deje/vim-ruby-interpolation'
-  "
+
   " Common
   Plug 'tpope/vim-markdown'
   Plug 'slim-template/vim-slim'
@@ -104,13 +113,19 @@ set colorcolumn=+1
 "
 " ALE
 let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
+let g:ale_lint_delay = 500
 let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {
       \ 'ruby': ['ruby', 'rubocop', 'reek'],
       \}
 let g:ale_linters_explicit = 1
 let g:ale_set_highlights = 0
+
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_ruby_reek_executable = 'bundle'
 
 " Airline
 let g:airline_powerline_fonts=1
@@ -123,7 +138,7 @@ let g:bufExplorerShowRelativePath=1
 if executable('rg')
   set grepprg=rg\ --color=never
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
+  let g:ctrlp_use_caching = 1
   let g:ctrlp_lazy_update = 1
 endif
 
@@ -170,8 +185,8 @@ nmap <Space>Mw <Plug>(easymotion-overwin-w)
 map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
 
-" Fastest search
-nnoremap <C-p>a :Rg<Cr>
+" Dash
+nmap <silent> <leader>d <Plug>DashSearch
 
 " ==========================================
 " UPPER/lowercase word
@@ -271,3 +286,12 @@ augroup set_shift_width
   au FileType javascript setl sw=2 sts=2 et
   au FileType yaml setl sw=2 sts=2 et
 augroup END
+
+" command! -bang -nargs=* Rg
+"       \ call fzf#vim#grep(
+"       \   'rg --column --line-number --no-heading --color=always --ignore-case '.shellescape(<q-args>), 1,
+"       \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"       \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"       \   <bang>0)
+
+nnoremap <C-p>a :Rg<Cr>
