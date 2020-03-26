@@ -35,7 +35,8 @@
   # log
   lo = log --oneline
 	logd = log --graph --decorate --oneline
-  lol = log --oneline -n
+  lom = log --oneline master..head
+  lon = log --oneline -n
 
   # difftool
   dt = difftool
