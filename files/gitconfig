@@ -24,6 +24,7 @@
   # checkout
 	ch = checkout
   chb = checkout -b
+  chm = checkout master
 
   # cherry-pick
   chrp = cherry-pick
