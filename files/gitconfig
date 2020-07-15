@@ -8,6 +8,12 @@
   editor = vim
   excludesfile = ~/.gitignore_global
 
+[pull]
+  rebase = false
+
+[push]
+  default = current
+
 [alias]
   # branch
 	br = branch
