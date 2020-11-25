@@ -10,7 +10,7 @@ xresources:
 	xrdb -load ~/.Xresources
 
 vim:
-	@cp -f files/vimrc ~/.vimrc
+	@sh configurators/vim.sh
 
 git:
 	@sh configurators/git.sh
