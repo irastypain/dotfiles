@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Copy general git config
-cp -i files/gitignore_global "$HOME/projects/test/.gitignore_global"
-cp -i files/gitconfig "$HOME/projects/test/.gitconfig"
+cp -i files/gitignore_global "$HOME/.gitignore_global"
+cp -i files/gitconfig "$HOME/.gitconfig"
 
 # Create project directories with empty .gitconfig
 ProjectDirs=('home' 'oss' 'rubycrutch' 'work')
