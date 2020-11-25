@@ -13,9 +13,7 @@ vim:
 	@cp -f files/vimrc ~/.vimrc
 
 git:
-	@mkdir -p ~/projects/home ~/projects/work ~/projects/oss ~/projects/rubycrutch && \
-	cp -f files/gitignore_global ~/.gitignore_global && \
-	cp -f files/gitconfig ~/.gitconfig
+	@sh configurators/git.sh
 
 tmux:
 	@cp -f files/tmux.conf ~/.tmux.conf
