@@ -72,15 +72,3 @@
   # custom commands
   # reset last commit to staged area
   rstlc = reset --soft HEAD~1
-
-[includeIf "gitdir/i:~/projects/work/"]
-  path = ~/projects/work/.gitconfig
-
-[includeIf "gitdir/i:~/projects/home/"]
-  path = ~/projects/home/.gitconfig
-
-[includeIf "gitdir/i:~/projects/oss/"]
-  path = ~/projects/oss/.gitconfig
-
-[includeIf "gitdir/i:~/projects/rubycrutch/"]
-  path = ~/projects/rubycrutch/.gitconfig
