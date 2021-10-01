@@ -227,7 +227,7 @@ inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 " Vim Fugitive
 "
 map <Leader>gbl :Git blame<CR>
-map <Leader>gbr :Gbrowse<CR>
+map <Leader>gbr :GBrowse<CR>
 map <Leader>gd :Gdiff<CR>
 
 " ==========================================
